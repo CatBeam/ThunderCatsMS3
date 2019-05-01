@@ -1,0 +1,91 @@
+
+<html>
+    <head>
+    <title></title>
+    </head>
+    <body>
+    <form name = "form1">
+        <table>
+            <tr>
+                <td>
+                    Make:
+                </td>
+                <td>
+                    <select name="provincestate" onChange="getCities(document.form1)">
+                        <option selected value = "Dodge">Dodge</option>
+                        <option selected value = "Ford">Ford</option>
+                        <option selected value = "Pontiac">Pontiac</option>
+                    </select>
+                </td>
+                <tr><td>Model:</td><td>
+                    <select name="city">
+
+                    </select></td></tr>
+        </table>
+    </form>
+    <script language =javascript>
+        availprovincestatearr = new Array(3);
+        availprovincestatenamearr = new Array(3);
+        availprovincestatearr[0] = "Dodge";
+        availprovincestatenamearr[0] = "Dodge";
+        availprovincestatearr[1] = "Ford";
+        availprovincestatenamearr[1] = "Ford";
+        availprovincestatearr[0] = "Pontiac";
+        availprovincestatenamearr[0] = "Pontiac";
+
+        defaultprovincestateIndex=0;
+
+        provincestateynum=3;
+        cityArray = new Array(3);
+        defaultcityIndex = new Array(3);
+        cityArray[0]= new Array("DodgeCharger", "Charger", "DodgeChallenger", "Challenger");
+        cityArray[1] = new Array("FordFocus", "Focus", "FordF-150", "F-150");
+        cityArray[2] = new Array("PontiacFirebird", "Firebird", "PontiacSolstice", "Solstice");
+
+        defaultcityIndex[0] = 0;
+        defaultcityIndex[1] = 0;
+        defaultcityIndex[2] = 0;
+
+function getCities(form)
+{
+
+  var Item;
+  Item = form.provincestate.selectedIndex;
+
+  while(Item > 0 && form.provincestate.options[Item].value == form.provincestate.options[Item - 1].value) Item = Item - 1;
+
+ 
+
+  form.city.options.length = 0;
+
+ 
+
+  defaultItemIndex = defaultcityIndex[Item];
+
+ 
+
+  for (j = 0; j < cityArray[Item].length; j += 2)
+
+  {
+
+    str1 = cityArray[Item][j+1];
+
+    str2 = cityArray[Item][j];
+
+ 
+
+    form.city.options[j/2] = new Option(str1, str2);
+
+  }
+
+ 
+
+  form.city.options[defaultItemIndex].selected = true;
+
+}
+
+</script>
+
+</body>
+
+</html>
